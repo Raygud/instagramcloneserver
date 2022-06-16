@@ -26,7 +26,7 @@ let Connection = mysql.createConnection({
 //Connect too external database
 Connection.connect(function (err) {
     if (err) throw err;
-    console.log("Connection to Database successful!!" + Connection.database);
+    console.log("Connection to Database successful!" + Connection.database);
 });
 
 
