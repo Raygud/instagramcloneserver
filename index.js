@@ -16,11 +16,11 @@ DataBaseResult = []
 
 //Login credentials for database
 let Connection = mysql.createConnection({
-    host: "mysql67.unoeuro.com",
-    port: "3306",
-    user: "runigud_com",
-    password: "b6tD2chEf4RmyHaBxdnz",
-    database: "runigud_com_db"
+    host: process.env.Host,
+    port: process.env.Port,
+    user: process.env.User,
+    password: process.env.Password,
+    database: process.env.Database
 });
 
 //Connect too external database
