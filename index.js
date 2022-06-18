@@ -5,7 +5,7 @@ var cors = require('cors')
 const importData = require("./data.json");
 const { send } = require("process");
 const Token = "OnlyRay121294"
-let port = process.env.PORT || 3001;
+let port = process.env.PORT;
 require('dotenv').config()
 app.use(function (req, res, next) {
 
