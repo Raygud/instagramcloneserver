@@ -7,7 +7,7 @@ const { send } = require("process");
 const Token = "OnlyRay121294"
 let port = process.env.PORT || 3001;
 require('dotenv').config()
-app.use(cors())
+app.use(cors({ origin: 'https://62ae23dad39be736fdd4919d--incredible-medovik-2ace61.netlify.app/' }));
 app.use(express.json({ limit: "1mb" }));
 
 DataBaseResult = []
