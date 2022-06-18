@@ -10,7 +10,7 @@ require('dotenv').config()
 app.use(function (req, res, next) {
 
     // Website you wish to allow to connect
-    res.setHeader('Access-Control-Allow-Origin', 'https://62ae23dad39be736fdd4919d--incredible-medovik-2ace61.netlify.app/');
+    res.setHeader('Access-Control-Allow-Origin', 'https://62ae23dad39be736fdd4919d--incredible-medovik-2ace61.netlify.app');
 
     // Request methods you wish to allow
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
