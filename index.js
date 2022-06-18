@@ -10,7 +10,7 @@ require('dotenv').config()
 app.use(function (req, res, next) {
 
     // Website you wish to allow to connect
-    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Origin', 'https://62ae23dad39be736fdd4919d--incredible-medovik-2ace61.netlify.app/');
 
     // Request methods you wish to allow
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
@@ -32,11 +32,11 @@ DataBaseResult = []
 
 //Login credentials for database
 let Connection = mysql.createConnection({
-    host: "mysql67.unoeuro.com",
-    port: "3306",
-    user: "runigud_com",
-    password: "b6tD2chEf4RmyHaBxdnz",
-    database: "runigud_com_db"
+    host: process.env.Host,
+    port: process.env.Port,
+    user: process.env.User,
+    password: process.env.Password,
+    database: process.env.Database
 });
 
 //Connect too external database
