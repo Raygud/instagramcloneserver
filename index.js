@@ -10,7 +10,7 @@ require('dotenv').config()
 app.use(function (req, res, next) {
 
     // Website you wish to allow to connect
-    res.setHeader('Access-Control-Allow-Origin', 'https://62ae23dad39be736fdd4919d--incredible-medovik-2ace61.netlify.app');
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
 
     // Request methods you wish to allow
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
@@ -85,7 +85,7 @@ app.get("/api/characters", (req, res) => {
 })
 
 app.get("/api/Posts", (req, res) => {
-    pool.query("SELECT * FROM Posts", function (err, result, fields) {
+    pool.query("SELECT Post.Image, Post.location, Post.Description, Post.Weight, Post.Timestamp, User.Username, User.ProfilePicture FROM Post INNER JOIN User ON Post.User_id=User.id;", function (err, result, fields) {
         if (err) throw err;
         console.log(result);
         res.send(result)
@@ -102,8 +102,8 @@ app.get("/players", (req, res) => {
 app.post("/api/Post", (req, res) => {
     console.log("Connected!");
     data = req.body
-    console.log(data)
-    var sql = `INSERT INTO Posts (name, profilePicture, likes, timeStamp, description, comments, image, LikedBy) VALUES ('${data.Name}','${data.ProfilePicture}','${data.Likes}','${data.Time}','${data.Description}','${data.Comments}','${data.image}','${data.Liked}');`;
+    console.log(data) // Sequalize Arrformvalue
+    var sql = `INSERT INTO Post (name, profilePicture, likes, timeStamp, description, comments, image, LikedBy) VALUES ('${data.Name}','${data.ProfilePicture}','${data.Likes}','${data.Time}','${data.Description}','${data.Comments}','${data.image}','${data.Liked}');`;
     pool.query(sql, function (err, result) {
         if (err) throw err;
         console.log("1 record inserted");
@@ -112,7 +112,7 @@ app.post("/api/Post", (req, res) => {
 })
 
 function UpdateLikes(data, likes) {
-    var sql = `UPDATE Posts SET likes = '${likes}' WHERE Postid = ${data.PostId};`;
+    var sql = `UPDATE Post SET likes = '${likes}' WHERE Postid = ${data.PostId};`;
     pool.query(sql, function (err, result) {
         if (err) throw err;
         console.log("Likes Updated")
@@ -131,7 +131,7 @@ app.post("/api/Like", (req, res) => {
         });
     }
     if (data.Action === "Unlike") {
-        var sql = `UPDATE Posts SET LikedBy = '' WHERE Postid = ${data.PostId}`;
+        var sql = `UPDATE Post SET LikedBy = '' WHERE Postid = ${data.PostId}`;
         pool.query(sql, function (err, result) {
             if (err) throw err;
             console.log("Unliked");
