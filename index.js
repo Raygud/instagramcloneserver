@@ -28,6 +28,17 @@ app.use(function (req, res, next) {
 
 DataBaseResult = []
 
+<<<<<<< HEAD
+=======
+//Login credentials for database
+let Connection = mysql.createConnection({
+    host: process.env.Host,
+    port: process.env.Port,
+    user: process.env.User,
+    password: process.env.Password,
+    database: process.env.Database
+});
+>>>>>>> 49b11c263e0474f74f380f1f22ff20a7f8cc7e30
 
 const pool = mysql.createPool({
     connectionLimit: 100, //important
